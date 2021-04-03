@@ -1,6 +1,5 @@
 package co.edu.unbosque.workshop3;
 
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.Socket;
@@ -10,20 +9,31 @@ public class Data implements Runnable {
 
 	private Socket socket;
 
-	public Data(Socket socket) {
+	private Socket socketAgente;
+
+	public Data(Socket socket, Socket socketAgente) {
 		this.socket = socket;
+		this.socketAgente = socketAgente;
+
 	}
 
 	@Override
 	public void run() {
 
 		safePrintln("Connected: " + socket);
+		safePrintln("Connected: " + socketAgente);
+
 
 		try {
 
 			var in = new Scanner(socket.getInputStream());
 			var out = new PrintWriter(socket.getOutputStream(), true);
+			
+			var inA = new Scanner(socketAgente.getInputStream());
+			var outA = new PrintWriter(socketAgente.getOutputStream(), true);
+			
 			out.println("Cidadano de 4 patas - 1.Crear caso - 2.Hablar con agente");
+			outA.println("Bienvenindo agente");
 
 			while (in.hasNextLine()) {
 				var message1 = in.nextLine();
@@ -121,20 +131,22 @@ public class Data implements Runnable {
 						default:
 	                        out.println("La opción es incorrecta");
 						}
-				} else {
+				}
+				if(message1.equals("2")) {
+					while(inA.hasNextLine()) {
+//						var message2 = in.nextLine();
+							var message = inA.nextLine();
+							out.println(message);
+					}
+					
+					
+				}else {
 					out.println("Escoja un número correcto - 1.Crear caso - 2.Hablar con agente");
 				}
 
 			}
-
-			while (in.hasNextLine()) {
-				var message = in.nextLine();
-				System.out.println(message);
-				safePrintln("The message received is: " + message);
-				var newMessage = message.toUpperCase();
-				safePrintln("The message to be returned is: " + newMessage);
-				out.println(newMessage);
-			}
+			
+			
 
 		} catch (Exception e) {
 			safePrintln("Error:" + socket);

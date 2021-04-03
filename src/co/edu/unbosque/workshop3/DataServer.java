@@ -1,7 +1,5 @@
 package co.edu.unbosque.workshop3;
 
-import java.io.DataOutputStream;
-import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.util.concurrent.Executors;
 
@@ -18,7 +16,7 @@ public class DataServer {
             var pool = Executors.newFixedThreadPool(20);
 
             while (true) {
-                pool.execute(new Data(listener.accept()));
+                pool.execute(new Data(listener.accept(), listener.accept()));
             }
 
         }
