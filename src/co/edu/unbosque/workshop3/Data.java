@@ -45,7 +45,6 @@ public class Data implements Runnable {
 			var outA = new PrintWriter(socketAgente.getOutputStream(), true);
 
 			out.println("Cidadano de 4 patas - 1.Crear caso - 2.Hablar con agente");
-			outA.println("Bienvenindo agente");
 
 			while (in.hasNextLine()) {
 				var message1 = in.nextLine();
@@ -221,11 +220,18 @@ public class Data implements Runnable {
 					}
 				}
 				if (message1.equals("2")) {
-					while (inA.hasNextLine()) {
-//						var message2 = in.nextLine();
-						var message = inA.nextLine();
-						out.println(message);
-					}
+					out.println("En momento conectaremos con el asesor");
+						outA.println("1.Aceptar - 2.Denegar");
+						var message2 = inA.nextLine();
+						if(message2.equals("1")) {
+							out.println("El agente ha aceptado tu solicitud, ya puedes enviar mensajes");
+							while(in.hasNextLine()) {
+								var message = in.nextLine();
+								outA.println("Cliente: "+ message);
+								var message3 = inA.nextLine();
+								out.println("Asesor: " +message3);
+							}
+						}
 
 				} else {
 					out.println("Escoja un número correcto - 1.Crear caso - 2.Hablar con agente");
