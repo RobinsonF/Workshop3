@@ -11,7 +11,6 @@ public class DataClient {
         try (var socket = new Socket("127.0.0.1", 59897)) {
 
             System.out.println("Connected: " + socket);
-//            System.out.println("Enter the message to be capitalized...");
 
             var scanner = new Scanner(System.in);
             var in = new Scanner(socket.getInputStream());
