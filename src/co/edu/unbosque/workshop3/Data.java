@@ -190,7 +190,7 @@ public class Data implements Runnable {
 						break;
 
 					case "5":
-						pet.setCaso("Manejo indevido en vía pública");
+						pet.setCaso("Manejo indebido en vía pública");
 						out.println("Ingrese la especie");
 						var message7 = in.nextLine();
 						pet.setEspecie(message7);
