@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Archivo {
 
-	private final String SAMPLE_CSV_FILE = "C:\\Users\\Robinson\\Workshop3\\Data\\pets.csv";
+	private final String SAMPLE_CSV_FILE = "Data\\pets.csv";
 
 	public Archivo() {
 

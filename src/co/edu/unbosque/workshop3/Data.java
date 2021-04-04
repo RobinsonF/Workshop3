@@ -19,7 +19,7 @@ public class Data implements Runnable {
 	private Socket socketAgente;
 
 	private ArrayList<PetDTO> petsList;
-	
+
 	private Archivo archivo;
 
 	public Data(Socket socket, Socket socketAgente) {
@@ -44,7 +44,7 @@ public class Data implements Runnable {
 			var inA = new Scanner(socketAgente.getInputStream());
 			var outA = new PrintWriter(socketAgente.getOutputStream(), true);
 
-			out.println("Cidadano de 4 patas - 1.Crear caso - 2.Hablar con agente");
+			out.println("Ciudadano de 4 patas - 1. Crear caso - 2. Hablar con un agente");
 
 			while (in.hasNextLine()) {
 				var message1 = in.nextLine();
@@ -52,9 +52,11 @@ public class Data implements Runnable {
 				if (message1.equals("1")) {
 					PetDTO pet = new PetDTO();
 					out.println(
-							"Escaja el caso - 1.Perdida - 2.Robo - 3.Abandono - 4.Animal Peligroso - 5.Manejo indevido en vía pública");
+							"Escoja el caso - 1. Perdida - 2. Robo - 3. Abandono - 4. Animal peligroso - 5. Manejo indevido en vía pública");
 					var message2 = in.nextLine();
+
 					switch (message2) {
+
 					case "1":
 						pet.setCaso("Perdida");
 						out.println("Ingrese la especie");
@@ -72,7 +74,7 @@ public class Data implements Runnable {
 						out.println("Ingrese su nombre");
 						message3 = in.nextLine();
 						pet.setNombrePersona(message3);
-						out.println("Ingrese su telefono");
+						out.println("Ingrese su teléfono");
 						message3 = in.nextLine();
 						pet.setTelefonoPersona(message3);
 						out.println("Ingrese su email");
@@ -87,6 +89,7 @@ public class Data implements Runnable {
 						archivo.escribirArchivo(petsList);
 						out.println("El caso ha sido creado");
 						break;
+
 					case "2":
 						pet.setCaso("Robo");
 						out.println("Ingrese la especie");
@@ -104,7 +107,7 @@ public class Data implements Runnable {
 						out.println("Ingrese su nombre");
 						message4 = in.nextLine();
 						pet.setNombrePersona(message4);
-						out.println("Ingrese su telefono");
+						out.println("Ingrese su teléfono");
 						message4 = in.nextLine();
 						pet.setTelefonoPersona(message4);
 						out.println("Ingrese su email");
@@ -119,6 +122,7 @@ public class Data implements Runnable {
 						archivo.escribirArchivo(petsList);
 						out.println("El caso ha sido creado");
 						break;
+
 					case "3":
 						pet.setCaso("Abandono");
 						out.println("Ingrese la especie");
@@ -136,7 +140,7 @@ public class Data implements Runnable {
 						out.println("Ingrese su nombre");
 						message5 = in.nextLine();
 						pet.setNombrePersona(message5);
-						out.println("Ingrese su telefono");
+						out.println("Ingrese su teléfono");
 						message5 = in.nextLine();
 						pet.setTelefonoPersona(message5);
 						out.println("Ingrese su email");
@@ -151,6 +155,7 @@ public class Data implements Runnable {
 						archivo.escribirArchivo(petsList);
 						out.println("El caso ha sido creado");
 						break;
+
 					case "4":
 						pet.setCaso("Animal Peligroso");
 						out.println("Ingrese la especie");
@@ -168,7 +173,7 @@ public class Data implements Runnable {
 						out.println("Ingrese su nombre");
 						message6 = in.nextLine();
 						pet.setNombrePersona(message6);
-						out.println("Ingrese su telefono");
+						out.println("Ingrese su teléfono");
 						message6 = in.nextLine();
 						pet.setTelefonoPersona(message6);
 						out.println("Ingrese su email");
@@ -183,6 +188,7 @@ public class Data implements Runnable {
 						archivo.escribirArchivo(petsList);
 						out.println("El caso ha sido creado");
 						break;
+
 					case "5":
 						pet.setCaso("Manejo indevido en vía pública");
 						out.println("Ingrese la especie");
@@ -200,7 +206,7 @@ public class Data implements Runnable {
 						out.println("Ingrese su nombre");
 						message7 = in.nextLine();
 						pet.setNombrePersona(message7);
-						out.println("Ingrese su telefono");
+						out.println("Ingrese su teléfono");
 						message7 = in.nextLine();
 						pet.setTelefonoPersona(message7);
 						out.println("Ingrese su email");
@@ -215,26 +221,28 @@ public class Data implements Runnable {
 						archivo.escribirArchivo(petsList);
 						out.println("El caso ha sido creado");
 						break;
+
 					default:
 						out.println("La opción es incorrecta");
 					}
 				}
+				
 				if (message1.equals("2")) {
 					out.println("En momento conectaremos con el asesor");
-						outA.println("1.Aceptar - 2.Denegar");
-						var message2 = inA.nextLine();
-						if(message2.equals("1")) {
-							out.println("El agente ha aceptado tu solicitud, ya puedes enviar mensajes");
-							while(in.hasNextLine()) {
-								var message = in.nextLine();
-								outA.println("Cliente: "+ message);
-								var message3 = inA.nextLine();
-								out.println("Asesor: " +message3);
-							}
+					outA.println("1. Aceptar - 2. Denegar");
+					var message2 = inA.nextLine();
+					if (message2.equals("1")) {
+						out.println("El agente ha aceptado tu solicitud, ya puedes enviar mensajes");
+						while (in.hasNextLine()) {
+							var message = in.nextLine();
+							outA.println("Cliente: " + message);
+							var message3 = inA.nextLine();
+							out.println("Asesor: " + message3);
 						}
+					}
 
 				} else {
-					out.println("Escoja un número correcto - 1.Crear caso - 2.Hablar con agente");
+					out.println("Escoja un número correcto - 1. Crear caso - 2. Hablar con agente");
 				}
 
 			}
