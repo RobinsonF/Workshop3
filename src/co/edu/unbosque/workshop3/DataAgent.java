@@ -21,8 +21,19 @@ public class DataAgent {
             String mensaje = "";
             while (scanner.hasNextLine()) {
             	mensaje = scanner.nextLine();
+            		int k = 0;
+            		do {
+            			if(mensaje.length() != 0) {
+            			k = 1;
+            			}else {
+            			System.out.println("Por favor ingrese algún valor");
+            			mensaje = scanner.nextLine();
+            			k = 0;
+            			}
+            		}while(k == 0);
                 out.println(mensaje);
                 System.out.println(in.nextLine());
+            
             }
 
         }
