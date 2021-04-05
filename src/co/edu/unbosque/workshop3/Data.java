@@ -48,7 +48,6 @@ public class Data implements Runnable {
 
 			while (in.hasNextLine()) {
 				var message1 = in.nextLine();
-				System.out.println(message1);
 				if (message1.equals("1")) {
 					PetDTO pet = new PetDTO();
 					out.println(
@@ -83,11 +82,12 @@ public class Data implements Runnable {
 						out.println("¿Algún comentario?");
 						message3 = in.nextLine();
 						pet.setComentariPersona(message3);
+						SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
 						Date fechaHoy = new Date();
-						pet.setFecha(String.valueOf(fechaHoy));
+						pet.setFecha(String.valueOf(formatter.format(fechaHoy)));
 						petsList.add(pet);
 						archivo.escribirArchivo(petsList);
-						out.println("El caso ha sido creado");
+						out.println("El caso ha sido creado - " + String.valueOf(formatter.format(fechaHoy)));
 						break;
 
 					case "2":
@@ -116,11 +116,12 @@ public class Data implements Runnable {
 						out.println("¿Algún comentario?");
 						message4 = in.nextLine();
 						pet.setComentariPersona(message4);
+						SimpleDateFormat formatter1 = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
 						Date fechaHoy1 = new Date();
-						pet.setFecha(String.valueOf(fechaHoy1));
+						pet.setFecha(String.valueOf(formatter1.format(fechaHoy1)));
 						petsList.add(pet);
 						archivo.escribirArchivo(petsList);
-						out.println("El caso ha sido creado");
+						out.println("El caso ha sido creado - " + String.valueOf(formatter1.format(fechaHoy1)));
 						break;
 
 					case "3":
@@ -149,11 +150,12 @@ public class Data implements Runnable {
 						out.println("¿Algún comentario?");
 						message5 = in.nextLine();
 						pet.setComentariPersona(message5);
+						SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
 						Date fechaHoy2 = new Date();
-						pet.setFecha(String.valueOf(fechaHoy2));
+						pet.setFecha(String.valueOf(formatter2.format(fechaHoy2)));
 						petsList.add(pet);
 						archivo.escribirArchivo(petsList);
-						out.println("El caso ha sido creado");
+						out.println("El caso ha sido creado - " + String.valueOf(formatter2.format(fechaHoy2)));
 						break;
 
 					case "4":
@@ -182,11 +184,12 @@ public class Data implements Runnable {
 						out.println("¿Algún comentario?");
 						message6 = in.nextLine();
 						pet.setComentariPersona(message6);
+						SimpleDateFormat formatter3 = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
 						Date fechaHoy3 = new Date();
-						pet.setFecha(String.valueOf(fechaHoy3));
+						pet.setFecha(String.valueOf(formatter3.format(fechaHoy3)));
 						petsList.add(pet);
 						archivo.escribirArchivo(petsList);
-						out.println("El caso ha sido creado");
+						out.println("El caso ha sido creado - " + String.valueOf(formatter3.format(fechaHoy3)));
 						break;
 
 					case "5":
@@ -215,11 +218,12 @@ public class Data implements Runnable {
 						out.println("¿Algún comentario?");
 						message7 = in.nextLine();
 						pet.setComentariPersona(message7);
+						SimpleDateFormat formatter4 = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss");
 						Date fechaHoy4 = new Date();
-						pet.setFecha(String.valueOf(fechaHoy4));
+						pet.setFecha(String.valueOf(formatter4.format(fechaHoy4)));
 						petsList.add(pet);
 						archivo.escribirArchivo(petsList);
-						out.println("El caso ha sido creado");
+						out.println("El caso ha sido creado - " + String.valueOf(formatter4.format(fechaHoy4)));
 						break;
 
 					default:
@@ -233,12 +237,15 @@ public class Data implements Runnable {
 					var message2 = inA.nextLine();
 					if (message2.equals("1")) {
 						out.println("El agente ha aceptado tu solicitud, ya puedes enviar mensajes");
-						while (in.hasNextLine()) {
+						while (true) {
 							var message = in.nextLine();
 							outA.println("Cliente: " + message);
 							var message3 = inA.nextLine();
 							out.println("Asesor: " + message3);
 						}
+					}
+					if (message2.equals("2")) {
+						out.println("El agente no está disponible");
 					}
 
 				} else {

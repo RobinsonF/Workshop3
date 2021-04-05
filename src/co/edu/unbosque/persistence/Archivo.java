@@ -13,7 +13,7 @@ public class Archivo {
 	private final String SAMPLE_CSV_FILE = "Data\\pets.csv";
 
 	public Archivo() {
-
+		
 	}
 
 	public void escribirArchivo(ArrayList<PetDTO> lista) {
